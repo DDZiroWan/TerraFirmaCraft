@@ -29,7 +29,7 @@ public class TFCDefaultSurfaceBuilder extends SurfaceBuilder<TFCSurfaceBuilderCo
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, TFCSurfaceBuilderConfig config)
     {
         BlockState stateUnder = config.getUnder();
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        BlockPos.Mutable pos = new BlockPos.Mutable();
 
         int surfaceFlag = -1;
         int chunkX = x & 15;

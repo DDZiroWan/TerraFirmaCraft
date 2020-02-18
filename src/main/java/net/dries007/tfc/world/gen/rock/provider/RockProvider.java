@@ -17,6 +17,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.area.LazyArea;
+import net.minecraft.world.server.ServerChunkProvider;
 import net.minecraftforge.common.util.LazyOptional;
 
 import net.dries007.tfc.api.types.Rock;
@@ -38,14 +39,13 @@ public class RockProvider
      * Only valid on server
      */
     @Nullable
-    @SuppressWarnings("ConstantConditions")
     public static RockProvider getProvider(World world)
     {
         AbstractChunkProvider chunkProvider = world.getChunkProvider();
         // Chunk provider can be null during the attach capabilities event
-        if (chunkProvider != null)
+        if (chunkProvider instanceof ServerChunkProvider)
         {
-            ChunkGenerator<?> chunkGenerator = chunkProvider.getChunkGenerator();
+            ChunkGenerator<?> chunkGenerator = ((ServerChunkProvider) chunkProvider).getChunkGenerator();
             if (chunkGenerator instanceof TFCOverworldChunkGenerator)
             {
                 return ((TFCOverworldChunkGenerator) chunkGenerator).getRockProvider();

@@ -7,8 +7,6 @@ package net.dries007.tfc.world.noise;
 
 /**
  * Wrapper for a 2D noise layer
- *
- * @author AlcatrazEscapee
  */
 @FunctionalInterface
 public interface INoise2D
